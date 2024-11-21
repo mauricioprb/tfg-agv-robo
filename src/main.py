@@ -36,6 +36,7 @@ if __name__ == "__main__":
     try:
         mqtt_client.iniciar()
         agv_operation_manager.iniciar()
+        mqtt_client.publicar("agv/teste", {"status": "TESTE"})
         print("Aguardando comandos...")
 
         while True:
