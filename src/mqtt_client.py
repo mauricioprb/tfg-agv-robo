@@ -1,5 +1,5 @@
 import paho.mqtt.client as mqtt
-import json  # Adicionado para conversão JSON
+import json 
 
 class MQTTClient:
     def __init__(self, broker_url, broker_port, username, password):
@@ -12,7 +12,7 @@ class MQTTClient:
         
         self.conectado = False
         self.topicos_callbacks = {}
-        self.on_connect_callback = None  # Callback para execução após conexão
+        self.on_connect_callback = None 
         self.client.on_connect = self.on_connect
         self.client.on_message = self.on_message
 
@@ -21,7 +21,7 @@ class MQTTClient:
             print("Conectado ao broker MQTT com sucesso.")
             self.conectado = True
             if self.on_connect_callback:
-                self.on_connect_callback()  # Executa callback após conexão
+                self.on_connect_callback() 
         else:
             print(f"Falha na conexão com o broker MQTT. Código de retorno: {rc}")
         for topico in self.topicos_callbacks:

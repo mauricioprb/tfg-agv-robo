@@ -15,17 +15,14 @@ class Motor:
         self.inicializar()
 
     def inicializar(self):
-        # Inicializa o ESC com o pulso neutro.
         self.pi.set_servo_pulsewidth(self.pino_gpio, self.pulso_neutro)
         time.sleep(1)
 
     def controlar(self, pulso):
-        # Define o pulso do motor para controlar a velocidade.
         if self.pulso_minimo <= pulso <= self.pulso_maximo:
             self.pi.set_servo_pulsewidth(self.pino_gpio, pulso)
         else:
             raise ValueError(f"Pulso fora do intervalo permitido: {pulso}")
 
     def parar(self):
-        # Para o motor
         self.pi.set_servo_pulsewidth(self.pino_gpio, 0)
