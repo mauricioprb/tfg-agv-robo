@@ -57,3 +57,12 @@ class LEDController:
         self.parar_piscada()
         GPIO.cleanup()
         print("GPIO limpo e LEDs desligados.")
+
+if __name__ == "__main__":
+    led_controller = LEDController()
+
+    try:
+        led_controller.acender_verde()
+        input("Pressione Enter para encerrar...")  # Mantém o programa rodando até o usuário encerrar
+    finally:
+        led_controller.finalizar()
